@@ -11,6 +11,8 @@ library(leaflet)
 ```
 
 ## Covid in Europe
+### New cases updated to January the 06th
+
 
 This project work wants to show the new Covid-19 cases in Europe updated to the date of 06/01.
 
