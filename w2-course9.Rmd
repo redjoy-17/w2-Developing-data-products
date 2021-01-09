@@ -1,0 +1,41 @@
+---
+title: "Covid in Europe"
+author: "Gaia Rossi"
+date: "1/8/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(leaflet)
+```
+
+## Covid in Europe
+
+This project work wants to show the new Covid-19 cases in Europe updated to the date of 06/01.
+
+For further information see: https://www.coronavirus-statistiques.com/stats-globale/toutes-les-statistiques-coronavirus-covid19/
+
+
+```{r map, echo = FALSE}
+
+df<-data.frame(name=c("Berlin","Bruxelles","Minsk","Copenhagen","Madrid","Tallinn","Helsinki","Athens","Dublin","Reykjavik","Rome","Paris",
+                      "Riga","Luxembourg","Oslo","Amsterdam","Warsaw","Lisbon","London","Moscow","Stockholm","Bern","Kyiv","Vilnius"),
+               CV_cases=c(45333,2923,1838,1844,42360,1084,223,510,6503,13,18416,21703,
+                          1374,162,825,9745,12119,9927,52787,23541,12536,3975,8997,2335),
+               lat=c(52.520008,50.8503396,53.893009,55.676098,40.416775,59.436962,60.192059,37.983810,53.350140,64.128288,41.902782,48.864716,
+                     56.946285,49.611622,59.911491,52.377956,52.237049,38.736946,51.509865,55.751244,59.334591,46.947456,50.450001,54.687157),
+               lng=c(13.404954,4.3517013,27.567444,12.568337,-3.703790,24.753574,24.945831,23.727539,-6.266155,-21.827774,12.496366,2.349014,
+                      24.105078,6.131935,10.757933,4.897070,21.017532,-9.142685,-0.118092,37.618423,18.063240,7.451123,30.523333,25.279652))
+
+
+df %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircles(weight=1, radius=df$CV_cases*10)
+
+
+```
+
+
+
